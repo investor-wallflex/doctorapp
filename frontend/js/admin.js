@@ -1,5 +1,5 @@
 
-const backendURL = "https://pococare1.onrender.com/"
+const backendURL = "https://doctorapp-80y0.onrender.com/"
 
 const spinner = document.getElementById("spinner");
 

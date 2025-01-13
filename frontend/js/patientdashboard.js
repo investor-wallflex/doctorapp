@@ -1,6 +1,6 @@
-const url = "https://pococare-assignment.vercel.app/"
+const url = "https://doctorapp-nu.vercel.app/"
 
-const backendURL = "https://pococare1.onrender.com/"
+const backendURL = "https://doctorapp-80y0.onrender.com/"
 
 
 if (!localStorage.getItem("token")) {
