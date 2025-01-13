@@ -107,4 +107,3 @@ doctorForm.addEventListener('submit', (e) => {
             console.error(error);
         });
 });
-

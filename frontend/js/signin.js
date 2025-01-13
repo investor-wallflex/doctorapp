@@ -128,4 +128,3 @@ doctorForm.addEventListener("submit", async (e) => {
         res.message ? alert("Invalid Credentials") : alert("Invalid Credentials")
     }
 })
-
