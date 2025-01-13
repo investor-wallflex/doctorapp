@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard</title>
+    <link rel="stylesheet" href="../style/patient.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <h1>Patient Dashboard</h1>
+        <div>
+            <h2 class="patient-name"></h2>
+            <button class="logout-btn">Logout</button>
+        </div>
+    </div>
+
+
+    <div class="appointments-container">
+        <h2>Upcoming Appointments</h2>
+        <div class="appointment-info">
+            <!-- Upcoming appointment information will be dynamically rendered here -->
+        </div>
+    </div>
+
+    <br><br>
+
+    <h1>Book any doctor for your Appointment</h1>
+    <div class="doctors-container">
+
+
+    </div>
+
+    <div id="modalDiv">
+
+    </div>
+
+
+    <!-- this will show our spinner -->
+    <div hidden id="spinner"></div>
+
+</body>
+
+</html>
+<script src="../js/patientdashboard.js"></script>

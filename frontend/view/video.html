@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIDEO</title>
+
+    <style>
+        body {
+            font-family: Verdana, Geneva, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        #videobutton {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        #videobutton:hover {
+            background-color: #45a049;
+        }
+
+        /* spinner */
+
+        #spinner:not([hidden]) {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #spinner::after {
+            content: "";
+            width: 80px;
+            height: 80px;
+            border: 2px solid #f3f3f3;
+            border-top: 3px solid #f25a41;
+            border-radius: 100%;
+            will-change: transform;
+            animation: spin 1s infinite linear
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <button id="videobutton">START VIDEO</button>
+
+
+    <!-- this will show our spinner -->
+    <div hidden id="spinner"></div>
+</body>
+
+</html>
+
+<script src="https://cdn.socket.io/4.6.0/socket.io.min.js"
+    integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
+    crossorigin="anonymous"></script>
+<script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+
+
+<script>
+
+    const url = "https://wecareyou.vercel.app/"
+    const backendURL = "https://pococare1.onrender.com/"
+
+    const socket = io(backendURL, {
+        transports: ["websocket"]  //to avoid cors
+    });
+
+    document.getElementById("videobutton").addEventListener('click', async () => {
+        spinner.removeAttribute('hidden');
+
+        try {
+            const response = await fetch(`${backendURL}video`);
+            if (!response.ok) {
+                throw new Error('Request failed');
+            }
+
+            else {
+                const res = await response.json();
+
+                let resp = await fetch(`${backendURL}email`, {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ "email": localStorage.getItem("email"), "url": `${url}view/room.html?roomId=${res.roomId}` })
+                })
+                spinner.setAttribute('hidden', '');
+
+                alert("Doctor will receive an email with the Meeting Link")
+                window.location.href = `./room.html?roomId=${res.roomId}`;
+            }
+
+        } catch (error) {
+            console.error(error);
+        }
+    });
+</script>

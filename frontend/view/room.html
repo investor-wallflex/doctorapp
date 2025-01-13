@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROOM</title>
+    <script src="https://cdn.socket.io/4.6.0/socket.io.min.js"
+        integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+    <style>
+        #video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 300px);
+            grid-auto-rows: 300px;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #endButtonDiv {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #297fb8;
+        }
+
+        h2 {
+            color: red
+        }
+
+        body {
+            font-family: Verdana, Geneva, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>VIDEO CHAT ROOM</h1>
+    </div>
+    <h2>Refresh ONLY if the other user has left or felt any delay in other user joining the Meet</h2>
+
+    <div id="endButtonDiv">
+        <button onclick="redirectToDashboard()">Go back to DASHBOARD</button>
+    </div>
+
+    <div id="video-grid"></div>
+
+    <br>
+
+    <button id="toggle-video-button">Start/Stop Video</button>
+    <br> <br>
+    <button id="toggle-audio-button">Mute/UnMute</button>
+
+</body>
+
+</html>
+
+<script>
+    const socket = io("https://pococare1.onrender.com/", {
+        transports: ["websocket"]  //to avoid cors
+    });
+
+
+    const currentUrl = window.location.href;
+
+    const url = new URL(currentUrl);
+    const searchParams = new URLSearchParams(url.search);
+    const ROOM_ID = searchParams.get('roomId');
+
+
+    const videoGrid = document.getElementById('video-grid')
+
+    const myPeer = new Peer();
+
+    const myVideo = document.createElement('video')
+    myVideo.muted = true   // mute our own audio so that we wont be listening to our own speech
+
+    const peers = {}
+
+
+    navigator.mediaDevices.getUserMedia({
+        video: true,
+        audio: true
+    }).then(stream => {
+        addVideoStream(myVideo, stream)   // render video
+
+        // listens or receives other user video to render on our screen
+        myPeer.on('call', call => {
+            call.answer(stream)                             // it is like answering video call
+            const video = document.createElement('video')
+            call.on('stream', userVideoStream => {
+                addVideoStream(video, userVideoStream)      // and send back video to them
+            })
+        })
+
+        // sends video to other user
+        socket.on('user-connected', userId => {
+            connectToNewUser(userId, stream)
+        })
+
+        const toggleVideoButton = document.getElementById('toggle-video-button');
+        toggleVideoButton.addEventListener('click', toggleVideoStream);
+
+        function toggleVideoStream() {
+            const videoTrack = stream.getVideoTracks()[0];
+
+            if (videoTrack.enabled) {
+                videoTrack.enabled = false;
+                myVideo.srcObject.getVideoTracks()[0].enabled = false;
+                toggleVideoButton.textContent = 'Start Video';
+            } else {
+                videoTrack.enabled = true;
+                myVideo.srcObject.getVideoTracks()[0].enabled = true;
+                toggleVideoButton.textContent = 'Stop Video';
+            }
+        }
+
+        const toggleAudioButton = document.getElementById('toggle-audio-button');
+
+        toggleAudioButton.addEventListener('click', toggleAudio);
+
+        function toggleAudio() {
+            const audioTrack = stream.getAudioTracks()[0];
+
+            if (audioTrack.enabled) {
+                audioTrack.enabled = false;
+                toggleAudioButton.textContent = 'Unmute';
+            } else {
+                audioTrack.enabled = true;
+                toggleAudioButton.textContent = 'Mute';
+            }
+        }
+    }).catch((err) => {
+        console.log(err);
+    });
+
+
+
+
+
+    socket.on('user-disconnected', userId => {
+        if (peers[userId]) peers[userId].close()
+    })
+
+    // when user joins 
+    myPeer.on('open', id => {
+        socket.emit('join-room', ROOM_ID, id) // inturn calls user-connected
+    })
+
+    function connectToNewUser(userId, stream) {
+        const call = myPeer.call(userId, stream)           // sends our video to others
+        const video = document.createElement('video')
+        call.on('stream', userVideoStream => {            // they sends their video 
+            addVideoStream(video, userVideoStream)        // inturn calls this function to render
+        })
+        call.on('close', () => {                         // when other left, video will be removed
+            video.remove()
+        })
+
+        peers[userId] = call
+    }
+
+    function addVideoStream(video, stream) {
+        video.srcObject = stream
+        video.addEventListener('loadedmetadata', () => {
+            video.play()
+        })
+        videoGrid.append(video)
+    }
+
+
+
+    function redirectToDashboard() {
+        window.location.href = './patientdashboard.html';
+    }
+
+
+
+</script>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard</title>
+    <link rel="stylesheet" href="../style/doctor.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <h1>Doctor Dashboard</h1>
+        <div>
+            <h2 class="doctor-name"></h2>
+            <button class="logout-btn">Logout</button>
+        </div>
+    </div>
+
+    <div>
+        Video Call Availability:
+        <h2 id="videoCall"></h2>
+    </div>
+
+    <button id="changeVideocall">Click here to change Video Call Availability</button>
+
+    <div class="appointments-container">
+        <h2>Upcoming Appointments</h2>
+        <div class="appointment-info">
+            <!-- Upcoming appointment information will be dynamically rendered here -->
+        </div>
+    </div>
+    <div id="modalDiv">
+    </div>
+
+
+     <!-- this will show our spinner -->
+     <div hidden id="spinner"></div>
+</body>
+
+</html>
+<script src="../js/doctordashboard.js"></script>

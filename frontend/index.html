@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>CareBuddy</title>
+  <style>
+    /* General Styles */
+ *{
+     padding: 0;
+     margin: 0;
+ }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  z-index: 10;
+  width: 97%;
+
+}
+
+.logo {
+  font-size: 1.5rem;
+  color: #0056ff;
+}
+
+.logo strong {
+  font-weight: bold;
+}
+
+/* Navbar Styles */t
+.navbar {
+  display: flex;
+  gap: 15px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #2063e1;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 1.1rem;
+}
+
+.navbar a:hover {
+  background-color: #f0f0f0;
+}
+
+.quick-service {
+  /* border: 2px solid #333333; */
+  border-radius: 20px;
+  color: #2063e1;
+  padding: 6px 12px;
+  /* font-weight: bold; */
+}
+
+.quick-service:hover {
+  background-color: #0056ff;
+  color: #2063e1;
+}
+
+.contact-us {
+  /* background-color: #2063e1; */
+  color: black;
+  padding: 8px 15px;
+  border-radius: 5px;
+  /* font-weight: bold;*/
+}
+
+
+/* Responsive Styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 20;
+  padding-right: 40px;
+}
+
+.hamburger .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #2063e1;
+  border-radius: 5px;
+  transition: all 0.3s;
+}
+
+/* the hero section css start from the next line of code */
+
+@keyframes slideFromTop {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Apply the animation to the container */
+.hero-container {
+    animation: slideFromTop 1s ease-in-out;
+    opacity: 1; /* Ensure visibility after animation */
+}
+
+.hero-section {
+  /* width: 100%; */
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center content vertically */
+  /* border: solid red; */
+  flex-direction: row; 
+  
+  
+}
+
+.hero-container {
+  /* min-width: 1200px; */
+  /* margin: 0px; */
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* width: 100%; */
+  gap: 20px;
+  min-height: calc(100vh - 60px); /* Adjust height to account for the header */
+  /* border: solid green; */
+ padding-right: 150px;
+
+}
+
+/* Left Text Section */
+.hero-text {
+  max-width: 1200px;
+ 
+
+}
+
+.hero-text h5 {
+  color: #1e73be;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.hero-text h1 {
+  /* font-size: 2.5rem; */
+  font-size: 3rem; /* Increase the font size */
+  line-height: 1.5; /* Add more spacing between lines */
+  font-weight: 700;
+  margin-bottom: 20px;
+  /* line-height: 1.3; */
+}
+
+.hero-text .highlight {
+  color: #1e73be;
+}
+
+.hero-text p {
+  /* font-size: 0.85rem; */
+  font-size: 1rem; /* Slightly larger font for better readability */
+  line-height: 1.8; /* Increase line height for easier reading */
+  color: #555555;
+  margin-bottom: 20px;
+  /* line-height: 1.6; */
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: #1e73be;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.cta-button:hover {
+  background-color: #0b59a1;
+  text-decoration: none;
+}
+
+.button{
+  background-color: #1e73be;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+}
+
+.button:hover {
+  background-color: #0b59a1;
+  text-decoration: none;
+}
+/* Right Image Section */
+.hero-image {
+  flex-shrink: 0;
+  max-width: 200px;
+}
+
+.hero-image img {
+  max-width: 400px; /* Increase the image size */
+  height: auto;     /* Maintain aspect ratio */
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding-top:  80px;
+  }
+  .hero-container {
+    flex-direction: column; /* Stack the content vertically on smaller screens */
+    padding-right: 20px;
+  }
+
+  .hero-text {
+    max-width: 90%; /* Allow text to use more space */
+  }
+
+  .hero-image img {
+    max-width: 300px; /* Adjust image size for smaller screens */
+  }
+
+  .hero-text h1 {
+    font-size: 3.4rem; /* Reduce the font size for mobile */
+  }
+
+  .hero-text p {
+    font-size: 1rem; /* Adjust paragraph font size */
+  }
+
+  .cta-button {
+    font-size: 0.9rem; /* Slightly smaller button text */
+    padding: 8px 15px; /* Adjust padding for mobile */
+  }
+  .button{
+  background-color: #1e73be;
+  color: #ffffff;
+  padding: 8px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  width: 150px;
+  margin-left: 10px;
+}
+
+.button:hover {
+  background-color: #0b59a1;
+  text-decoration: none;
+}
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding-top:  80px;
+  }
+  .hero-container {
+    padding-right: 10px;
+  }
+
+  .hero-text h1 {
+    font-size: 2rem; /* Further reduce font size for very small screens */
+  }
+
+  .hero-text p {
+    font-size: 0.9rem; /* Slightly smaller font for readability */
+  }
+
+  .cta-button {
+    font-size: 0.85rem; /* Even smaller button text */
+    padding: 6px 12px; /* Adjust padding for very small screens */
+  }
+
+  .hero-image img {
+    max-width: 250px; /* Reduce image size further */
+  }
+}
+
+/* Amazing service css*/
+.services {
+  text-align: center;
+  padding: 2rem;
+  background-color: rgb(244, 244, 244);
+ 
+ 
+}
+
+
+
+
+
+.services-title {
+  font-size: 2rem;
+  color: #27477d;
+  margin-bottom: 0.5rem;
+}
+
+.services-description {
+  /* margin-bottom: 2rem; */
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1rem; /* Slightly larger font for better readability */
+  line-height: 1.8; /* Increase line height for easier reading */
+  color: #555555;
+  margin-bottom: 20px;
+}
+
+.services-cards {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.service-card {
+  width: 100%;
+  max-width: 300px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  transition: transform 0.2s;
+}
+
+.service-card:hover {
+  transform: scale(1.05);
+}
+
+.service-image {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.service-content {
+  margin-top: 1rem;
+}
+
+.service-title {
+  font-size: 1.25rem;
+  color: #27477d;
+  margin: 0.5rem 0;
+}
+
+.service-description {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+/* Media queries for responsiveness services css */
+@media (max-width: 768px) {
+  .services-title {
+    font-size: 1.75rem;
+  }
+
+  .services-description {
+    font-size: 1rem;
+  }
+
+  .service-title {
+    font-size: 1.1rem;
+  }
+
+  .service-description {
+    font-size: 0.85rem;
+  }
+
+  .service-card {
+    max-width: 100%;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-title {
+    font-size: 1.5rem;
+  }
+
+  .services-description {
+    font-size: 0.9rem;
+    padding: 0 1rem;
+  }
+
+  .service-title {
+    font-size: 1rem;
+  }
+
+  .service-description {
+    font-size: 0.8rem;
+  }
+}
+
+/*Meet our doctors css start here*/
+
+.doctors-container {
+  padding: 20px;
+  text-align: center;
+
+  
+}
+.meetOurDoctor{
+  display: flex;
+  flex-direction: column;
+  
+
+}
+.meetOurDoctor h3 {
+  color: #00aaff;
+  margin-bottom: 10px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.meetOurDoctor h1 {
+  color: #003366;
+  margin-bottom: 20px;
+}
+
+.meetOurDoctor p {
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+.doctors-list {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.doctor-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+}
+
+.doctor-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.doctor-card h3 {
+  color: #003366;
+  margin-bottom: 5px;
+}
+
+.doctor-card h4 {
+  color: #00aaff;
+  margin-bottom: 15px;
+}
+
+.doctor-card p {
+  color: #555;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.doctor-card strong {
+  color: #003366;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .doctor-card {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .meetOurDoctor h1 {
+    font-size: 1.5rem;
+  }
+
+  .meetOurDoctor p {
+    font-size: 0.9rem;
+    padding: 0 1rem;
+  }
+
+  .doctor-card {
+    padding: 15px;
+  }
+
+  .doctor-card p {
+    font-size: 12px;
+  }
+}
+
+
+/*book appointment section css*/
+.appointment-container {
+    display: flex;
+    /* flex-wrap: wrap; */
+    margin: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    /* border: solid red; */
+  }
+  
+  .left-section {
+    flex: 1 1 50%;
+    padding: 20px;
+    background-color: #fff;
+    border-right: 1px solid #eee;
+  }
+  
+  .left-section h3 {
+    color: #00aaff;
+    margin-bottom: 10px;
+  }
+  
+  .left-section h1 {
+    color: #003366;
+    margin-bottom: 20px;
+  }
+  
+  .left-section p {
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  
+  .left-section ul {
+    padding-left: 20px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .info-button {
+    padding: 10px 20px;
+    background-color: #00aaff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .right-section {
+    flex: 1 1 50%;
+    padding: 20px;
+    background-color: #003366;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .right-section h2 {
+    margin-bottom: 10px;
+  }
+  
+  .right-section p {
+    margin-bottom: 20px;
+  }
+  
+  .appointmentForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+   
+  .appointmentForm input {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    width: 100%;
+   
+  } 
+ 
+  
+  .appointmentForm button {
+    padding: 10px 20px;
+    background-color: #00aaff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+     width: 100%;
+  }
+  
+
+
+  @media (max-width: 768px) {
+    .appointment-container {
+      display: flex;
+      flex-direction: column;
+    }
+    .left-section, .right-section {
+      flex: 1 1 100%; /* Take full width on small screens */
+      border-right: none; /* Remove the border for stacking sections */
+      padding: 50px;
+    }
+  }
+  
+  .left-section h3 {
+    color: #00aaff;
+    margin-bottom: 10px;
+  }
+  
+  .left-section h1 {
+    color: #003366;
+    margin-bottom: 20px;
+  }
+  
+  .left-section p {
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  
+  .left-section ul {
+    padding-left: 20px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .info-button {
+    padding: 10px 20px;
+    background-color: #00aaff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .right-section h2 {
+    margin-bottom: 10px;
+  }
+  
+  .right-section p {
+    margin-bottom: 20px;
+  }
+  
+  .appointmentForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px; /* Constrain form width */
+    margin: 0 auto; /* Center form horizontally */
+  }
+  
+  .appointmentForm select{
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    width: 100%;
+  }
+  .appointmentForm input {
+    padding: 10px ;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    width: 94%;
+  }
+  
+  .appointmentForm button {
+    padding: 10px 20px;
+    background-color: #00aaff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  /* Fine-tune for very small devices */
+  @media (max-width: 480px) {
+    .appointment-container {
+      display: flex;
+      flex-direction: column;
+    }
+    .appointmentForm {
+      max-width: 300px;
+    }
+  
+    .info-button {
+      width: 100%; /* Full-width button on small screens */
+    }
+  }
+/* Responsive Design */
+@media (max-width: 768px) {
+  .left-section,
+  .right-section {
+    flex: 1 1 100%;
+    border-right: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .appointmentForm {
+    max-width: 300px;
+  }
+
+  .info-button {
+    width: 100%;
+  }
+}
+
+/*footer css*/
+/* Footer Styles */
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: #f8f9fa;
+  padding: 40px 20px;
+  color: #333;
+  font-family: Arial, sans-serif;
+}
+
+.footer-section {
+  flex: 1;
+  margin: 15px;
+  min-width: 250px; /* Ensures sections stack on narrow screens */
+}
+
+.footer-section h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #000;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 15px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.footer-section ul li i {
+  margin-right: 10px;
+  color: #007bff;
+}
+
+.footer-section p {
+  font-size: 14px;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.footer-section input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.footer-section button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.footer-section button:hover {
+  background-color: #0056b3;
+}
+
+.footer-section ul li a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+  text-decoration: underline;
+}
+
+.downdiv {
+  background: linear-gradient(to right, #67b26f, #4ca2cd);
+  color: white;
+  padding: 20px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.copyright {
+  font-size: 14px;
+  margin: 0;
+  flex: 1;
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #dfe6e9;
+}
+
+.back-to-top {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-section {
+    margin: 15px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-section h3 {
+    font-size: 16px;
+  }
+
+  .footer-section ul li,
+  .footer-section p {
+    font-size: 13px;
+  }
+
+  .footer-section input {
+    font-size: 13px;
+  }
+
+  .footer-section button {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+
+
+/* Mobile Navigation */
+@media screen and (max-width: 768px) {
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 250px;
+    height: 100%;
+    background-color: #ffffff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    padding-top: 50px;
+    gap: 20px;
+    z-index: 15;
+    transition: right 0.3s;
+  }
+
+  .navbar.active {
+    right: 0;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .hamburger.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+  .hero-container {
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .hero-text {
+    max-width: 90%;
+  }
+
+  .hero-image img {
+    max-width: 250px;
+  }
+
+  .navbar a {
+    font-size: 1rem;
+    padding: 8px 10px;
+}
+.hero-text h1 {
+        font-size: 2rem;
+      }
+
+      .hero-text p {
+        font-size: 0.9rem;
+      }
+
+
+}
+
+
+
+
+
+/* styling for hero section start from here for mobile*/
+@media (max-width: 480px) {
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 250px;
+    height: 100%;
+    background-color: #ffffff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    padding-top: 50px;
+    gap: 20px;
+    z-index: 15;
+    transition: right 0.3s;
+  }
+
+  .navbar.active {
+    right: 0;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .hamburger.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+  .hero-container {
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .hero-text {
+    max-width: 90%;
+  }
+
+  .hero-image img {
+    max-width: 250px;
+  }
+
+  .navbar a {
+    font-size: 1rem;
+    padding: 8px 10px;
+}
+.hero-text h1 {
+        font-size: 2rem;
+      }
+
+      .hero-text p {
+        font-size: 0.9rem;
+      }
+
+    .text-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .text-content p {
+        font-size: 0.8rem;
+    }
+
+    .cta-button {
+        font-size: 0.75rem;
+        padding: 6px 10px;
+    }
+  }
+
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <span>Care</span><strong>Buddy</strong>
+    </div>
+    <button class="hamburger" id="hamburger">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <nav class="navbar" id="navbar">
+      <a href="./index.html">Home</a>
+      <a href="#about-us">About us</a>
+      <a href="#services">Services</a>
+      <a href="#quick-service" class="quick-service">Quick Service</a>
+      <a href="#contact-us" class="contact-us">Contact us</a>
+      <button class="button" id="signup">SIGNUP</button>
+      <button class="button" id="login">LOGIN</button>
+    </nav>
+  </header>
+
+  <!--the header codes stops here and the hero section start from the next line below-->
+
+  <section class="hero-section">
+    <div class="hero-container">
+      <!-- Left Content -->
+      <div class="hero-text">
+        <h5>Our people and society</h5>
+        <h1>
+          Best Treatment for <span class="highlight">Healthy life</span>
+        </h1>
+        <p>
+          Effortlessly empower seamless healthcare solutions with CareBuddy’s holistic virtual clinic platform.<br />
+          Dynamically streamline access to personalized care pathways and optimize patient engagement<br />
+          for critical health outcomes across all wellness journeys.
+        </p>
+        <a href="/getstarted" class="cta-button">Get Started</a>
+      </div>
+
+      <!-- Right Image -->
+      <div class="hero-image">
+        <img src="https://www.pococare.com/Images/banner_image.png" alt="Doctor">
+      </div>
+    </div>
+  </section>
+
+  <!--Amazing service section-->
+  <div class="services">
+    <h2 class="services-title">Amazing Services</h2>
+    <p class="services-description">
+      Seamlessly integrate digital healthcare solutions that empower patients with on-demand consultations, holistic health record access, and a unified health journey—driving proactive, patient-centered care that adapts to evolving health landscapes and optimizes clinic efficiency.
+    </p>
+    <div class="services-cards">
+      <div class="service-card">
+        <img src="/images/doctoravailable.jpg" alt="Doctor Availability & Scheduling" class="service-image">
+        <div class="service-content">
+          <h3 class="service-title">Doctor Availability & Scheduling</h3>
+          <p class="service-description">Real-time availability of doctors for appointments and simplified scheduling interface.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="/images/medicalrecord.png" alt="Medical Records Access" class="service-image">
+        <div class="service-content">
+          <h3 class="service-title">Medical Records Access</h3>
+          <p class="service-description">A secure portal where users can access their medical records, prescriptions, and test results.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="/images/medicalreminder.png" alt="Medication Reminders" class="service-image">
+        <div class="service-content">
+          <h3 class="service-title">Medication Reminders</h3>
+          <p class="service-description">Notifications for upcoming medication schedules and refills.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="/images/telemedicine.png" alt="Telemedicine" class="service-image">
+        <div class="service-content">
+          <h3 class="service-title">Telemedicine</h3>
+          <p class="service-description">Video call feature for virtual consultations with health professionals.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="/images/emergency.png" alt="Emergency Contact & Support" class="service-image">
+        <div class="service-content">
+          <h3 class="service-title">Emergency Contact & Support</h3>
+          <p class="service-description">Access to urgent care and emergency contact or hotline in case of immediate health needs.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="/images/healthy.png" alt="Health Insights & Tips" class="service-image">
+        <div class="service-content">
+          <h3 class="service-title">Health Insights & Tips</h3>
+          <p class="service-description">Personalized health articles and lifestyle tips based on user history and health goals.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="/images/checker.png" alt="Symptom Checker" class="service-image">
+        <div class="service-content">
+          <h3 class="service-title">Symptom Checker</h3>
+          <p class="service-description">A quick symptom checker to guide users on whether they should consult a doctor with links to relevant services.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--doctor section-->
+  <div class="doctors-container">
+    <div class="meetOurDoctor">
+      <h3>Medical & General Care!</h3>
+      <h1>Meet Our Doctors</h1>
+      <p>
+        Proactively revolutionize granular customer service after pandemic <br />
+        internal or "organic" sources proactive human capital rather.
+      </p>
+      <div class="doctors-list">
+        <div class="doctor-card">
+          <img
+            src="/images/doctortwo.png"
+            alt="Dr. John Doe"
+            class="doctor-image"
+          />
+          <h3>Dr. John Doe</h3>
+          <h4>Cardiology Specialist</h4>
+          <p>Dr. John is a leading cardiologist with 15 years of experience in the field.</p>
+          <p><strong>📞 +1234567890</strong></p>
+          <p><strong>📧 john.doe@example.com</strong></p>
+        </div>
+        <div class="doctor-card">
+          <img
+            src="/images/doctorone.png"
+            alt="Dr. Jane Smith"
+            class="doctor-image"
+          />
+          <h3>Dr. Jane Smith</h3>
+          <h4>Neurology Specialist</h4>
+          <p>Dr. Jane specializes in neurology and has worked with patients worldwide.</p>
+          <p><strong>📞 +9876543210</strong></p>
+          <p><strong>📧 jane.smith@example.com</strong></p>
+        </div>
+        <!-- Add more doctor cards as needed -->
+        <div class="doctor-card">
+          <img
+            src="/images/doctorthree.png"
+            alt="Dr. Jane Smith"
+            class="doctor-image"
+          />
+          <h3>Dr. Jerzzy Lamot</h3>
+          <h4>Dermatologists</h4>
+          <p>Dr. Jane specializes in neurology and has worked with patients worldwide.</p>
+          <p><strong>📞 +9876543210</strong></p>
+          <p><strong>📧 jane.smith@example.com</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--book apointment section-->
+
+<div class="appointment-container">
+  <!-- Left Section -->
+  <div class="left-section">
+    <h3>Medical & General Care!</h3>
+    <h1>We're Here For You</h1>
+    <p>
+      Transform healthcare engagement by seamlessly integrating proactive patient- <br>
+      centered solutions with innovative technology. Revolutionize care delivery through <br> 
+      personalized insights, enhancing efficiency and accessibility beyond traditional <br> 
+      boundaries.
+    </p>
+    <ul>
+      <li>✔ 99% success rate</li>
+      <li>✔ Free Consultation</li>
+      <li>✔ 100% Confidential</li>
+      <li>✔ Expert serviceable agents</li>
+      <li>✔ Affordable Fees</li>
+      <li>✔ Over 50 years experience</li>
+    </ul>
+    <button class="info-button">Get More Info</button>
+  </div>
+
+  <!-- Right Section -->
+  <div class="right-section">
+    <h2>Book An Appointment</h2>
+    <p>Please Call Us To Ensure</p>
+    <form class="appointmentForm" action="#" method="post">
+      <select name="department" required>
+        <option value="">Select a Medical Expert</option>
+        <option value="general-physician">General Physician</option>
+        <option value="lung-specialist">Lung Specialist</option>
+        <option value="surgeon">Surgeon</option>
+        <option value="cardiologist">Cardiologist</option>
+        <option value="psychiatrist">Psychiatrist</option>
+      </select>
+      <select name="doctor" required>
+        <option value="david-smith">David Smith</option>
+        <option value="jane-doe">Jane Doe</option>
+      </select>
+      <input
+        type="text"
+        name="name"
+        placeholder="Your Name"
+        required
+      />
+      <input
+        type="email"
+        name="email"
+        placeholder="Email Address"
+        required
+      />
+      <input
+        type="tel"
+        name="phone"
+        placeholder="Your Phone"
+        required
+      />
+      <input
+        type="date"
+        name="date"
+        required
+      />
+      <button type="submit">Make Appointment</button>
+    </form>
+  </div>
+</div>
+
+<!--footer-->
+
+<footer class="footer">
+  <div class="footer-section">
+    <h3>Contact us</h3>
+    <ul>
+      <li>
+        <i class="fas fa-phone"></i> Call us
+        <br />
+        +234 902 537 5109
+      </li>
+      <li>
+        <i class="fas fa-map-marker-alt"></i> Visit us anytime
+        <br />
+        10th Avenue, Benson Ikorodu, Lagos
+      </li>
+      <li>
+        <br />
+        office@carebuddy.com
+      </li>
+    </ul>
+  </div>
+  <div class="footer-section">
+    <h3>About us</h3>
+    <ul>
+      <li><a href="#">About us</a></li>
+      <li><a href="#">Our Services</a></li>
+      <li><a href="#">Appointments</a></li>
+      <li><a href="#">Location</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">Pharmacy</a></li>
+    </ul>
+  </div>
+  <div class="footer-section">
+    <h3>Subscribe</h3>
+    <p>
+      Sign up for the CareBuddy newsletter to receive news, offers, and
+      discounts from the clinic.
+    </p>
+    <input type="email" placeholder="Type in your email address" />
+    <button>Subscribe</button>
+  </div>
+  <div class="footer-section">
+    <h3>Social networks</h3>
+    <ul>
+      <li>
+        <i class="fab fa-facebook"></i> Facebook
+        <br />
+        www.facebook.com/carebuddy
+      </li>
+      <li>
+        <i class="fab fa-twitter"></i> Twitter
+        <br />
+        #carebuddy
+      </li>
+      <li>
+        <i class="fab fa-instagram"></i> Instagram
+        <br />
+        www.instagram.com/carebuddy
+      </li>
+    </ul>
+  </div>
+  <div class="downdiv">
+    <div class="footer-content">
+      <p class="copyright">Copyright by BoldThemes 2018. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#location">Location</a>
+        <a href="#contact">Contact Us</a>
+        <a href="#services">Our Services</a>
+        <a href="#top" class="back-to-top">Back to Page Top</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <script>
+    // hamburger function
+    const hamburger = document.getElementById('hamburger');
+    const navbar = document.getElementById('navbar');
+
+    hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navbar.classList.toggle('active');
+});
+
+// rendering page
+
+const url = "https://pococare-assignment.vercel.app/"
+    const signup = document.getElementById("signup")
+
+    signup.addEventListener("click", () => {
+        window.location.href = `./view/signup.html`
+    })
+
+
+
+    const login = document.getElementById("login")
+
+    login.addEventListener("click", () => {
+        window.location.href = "./view/signin.html"
+    })
+
+    // `${url}view/signin.html`
+    
+
+
+
+
+
+
+
+  </script>
+</body>
+</html>
+

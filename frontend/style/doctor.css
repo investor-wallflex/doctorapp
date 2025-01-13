@@ -1,0 +1,164 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: rgb(238, 217, 217);
+}
+
+body {
+    font-family: Verdana, Geneva, sans-serif;
+        margin: 0;
+        background-color: #f4f4f4;
+}
+
+
+.navbar h1 {
+    margin: 0;
+}
+
+.navbar .logout-btn {
+    padding: 5px 10px;
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.doctor-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.doctor-card img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.doctor-image {
+    width: 170px
+}
+
+.doctor-card .doctor-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.doctor-card .doctor-email {
+    margin-bottom: 5px;
+}
+
+.doctor-card .doctor-specialization {
+    margin-bottom: 10px;
+}
+
+.doctor-card .book-btn {
+    padding: 5px 10px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.doctors-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+
+.appointment-info div {
+    display: flex;
+    justify-content: space-around;
+}
+
+.cancel-appointment-btn {
+    padding: 5px 10px;
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+    height: 50px;
+    margin-top: 40px;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.appointment-info p {
+    font-size: 20px;
+    margin-top: 60px
+}
+
+button {
+    cursor: pointer
+}
+
+.navbar div {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.navbar h2 {
+    margin-right: 10px
+}
+
+.logout-btn {
+    font-size: medium;
+    font-weight: bold;
+}
+
+
+#changeVideocall {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+
+
+#spinner:not([hidden]) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#spinner::after {
+    content: "";
+    width: 80px;
+    height: 80px;
+    border: 2px solid #f3f3f3;
+    border-top: 3px solid #f25a41;
+    border-radius: 100%;
+    will-change: transform;
+    animation: spin 1s infinite linear
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

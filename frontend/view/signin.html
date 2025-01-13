@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN_Page</title>
+    <link rel="stylesheet" href="../style/signin.css">
+</head>
+
+<body>
+
+    <nav>
+        <div id="index" class="logo">
+            <span>Care</span><strong>Buddy</strong>
+          </div>
+
+        <div id="buttons">
+            <button id="home">Home</button>
+
+            <button id="admin">Login as ADMIN</button>
+
+            <button id="signup">Click to Create an account</button>
+        </div>
+    </nav>
+
+    <h1>Welcome to Doctor's Appointment Booking Application</h1>
+
+    <div class="container">
+        <div class="form patient">
+            <h2>Login as Patient</h2>
+            <form action="">
+                <label for="patientEmail">Email</label>
+                <input type="email" id="patientEmail" name="email" required>
+                <label for="patientPassword">Password</label>
+                <input type="password" id="patientPassword" name="password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+        <div class="form doctor">
+            <h2>Login as Doctor</h2>
+            <form action="">
+                <label for="doctorEmail">Email</label>
+                <input type="email" id="doctorEmail" name="email" required>
+                <label for="doctorPassword">Password</label>
+                <input type="password" id="doctorPassword" name="password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- this will show our spinner -->
+    <div hidden id="spinner"></div>
+</body>
+
+</html>
+
+
+<script src="../js/signin.js"></script>

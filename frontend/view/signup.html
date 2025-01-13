@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGNUP</title>
+    <link rel="stylesheet" href="../style/signup.css">
+<body>
+
+
+    <nav>
+        <div id="index" class="logo">
+            <span>Care</span><strong>Buddy</strong>
+          </div>
+
+        <div id="buttons">
+            <button id="home">Home</button>
+
+            <button id="signin">Click if you already have an account</button>
+
+        </div>
+    </nav>
+
+
+    <h1>Welcome to Doctor's Appointment Booking Application</h1>
+
+
+    <div class="role-buttons">
+        <h1>Are you </h1>
+        <button onclick="showDoctorForm()">Doctor</button>
+        <button onclick="showPatientForm()">Patient</button>
+    </div>
+    <div class="container">
+        <div class="form" id="doctorForm">
+            <h2>Doctor Signup</h2>
+            <form action="" method="">
+                <label for="doctorName">Name</label>
+                <input type="text" id="doctorName" name="name" required>
+                <label for="doctorEmail">Email</label>
+                <input type="email" id="doctorEmail" name="email" required>
+                <label for="doctorPassword">Password</label>
+                <input type="password" id="doctorPassword" name="password" required>
+                <label for="doctorSpecialisation">Specialisation</label>
+                <select id="doctorSpecialisation" name="specialisation" required>
+                    <option value="heart">Heart</option>
+                    <option value="kidney">Kidney</option>
+                    <option value="general">General</option>
+                </select>
+                <label for="doctorVideocall">Video Call Availability</label>
+                <select id="doctorVideocall" name="videocall" required>
+                    <option value="NO">NO</option>
+                    <option value="YES">YES</option>
+                </select>
+                <label for="doctorImage">Image (URL)</label>
+                <input type="text" id="doctorImage" name="image" required>
+                <button type="submit">Signup</button>
+            </form>
+        </div>
+        <div class="form" id="patientForm">
+            <h2>Patient Signup</h2>
+            <form action="" method="">
+                <label for="patientName">Name</label>
+                <input type="text" id="patientName" name="name" required>
+                <label for="patientEmail">Email</label>
+                <input type="email" id="patientEmail" name="email" required>
+                <label for="patientPassword">Password</label>
+                <input type="password" id="patientPassword" name="password" required>
+                <label for="patientImage">Image (URL)</label>
+                <input type="text" id="patientImage" name="image" required>
+                <button type="submit">Signup</button>
+            </form>
+        </div>
+    </div>
+    <!-- this will show our spinner -->
+    <div hidden id="spinner"></div>
+
+</body>
+
+</html>
+
+<script src="../js/signup.js"></script>
