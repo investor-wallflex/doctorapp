@@ -11,8 +11,8 @@ const spinner = document.getElementById("spinner");
 // })
 
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("signin").addEventListener("click", () => {
-        window.location.assign("signin.html");
+    document.getElementById("signup").addEventListener("click", () => {
+        window.location.assign("signup.html");
     });
 });
 
