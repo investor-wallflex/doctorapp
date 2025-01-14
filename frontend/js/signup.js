@@ -1,4 +1,4 @@
-// const url = "https://doctorapp-nu.vercel.app/"
+const url = "https://doctorapp-nu.vercel.app/"
 
 const backendURL = "https://doctorapp-80y0.onrender.com/"
 
