@@ -46,8 +46,8 @@ doctorRoute.post("/login", async (req, res) => {
     try {
         bcrypt.compare(password, data.password, function (err, result) {
             if (result) {
-                var token = jwt.sign({ doctorID: data._id }, process.env.key);
-                var refreshtoken = jwt.sign({ doctorID: data._id }, process.env.key, { expiresIn: 60 * 1000 });
+                var token = jwt.sign({ doctorID: data._id }, process.env.JWT_SECRET);
+                var refreshtoken = jwt.sign({ doctorID: data._id }, process.env.JWT_SECRET, { expiresIn: 60 * 1000 });
                 res.status(201).send({
                     "message": "Validation done",
                     "token": token,

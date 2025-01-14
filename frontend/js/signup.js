@@ -1,4 +1,4 @@
-const url = "https://doctorapp-nu.vercel.app/"
+// const url = "https://doctorapp-nu.vercel.app/"
 
 const backendURL = "https://doctorapp-80y0.onrender.com/"
 
@@ -6,16 +6,18 @@ const spinner = document.getElementById("spinner");
 
 
 
-document.querySelector("#index h1").addEventListener("click", () => {
-    window.location.href = `../index.html`
-})
+// document.querySelector("#index h1").addEventListener("click", () => {
+//     window.location.href = `../index.html`
+// })
 
-document.querySelector("#signin").addEventListener("click", () => {
-    window.location.href = `./signin.html`
-})
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("signin").addEventListener("click", () => {
+        window.location.assign("signin.html");
+    });
+});
 
 document.querySelector("#home").addEventListener("click", () => {
-    window.location.href = `../index.html`
+    window.location.href = `../index.html`;
 })
 
 function showDoctorForm() {
@@ -107,3 +109,4 @@ doctorForm.addEventListener('submit', (e) => {
             console.error(error);
         });
 });
+

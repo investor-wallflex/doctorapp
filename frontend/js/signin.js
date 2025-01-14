@@ -8,9 +8,9 @@ document.querySelector("#signup").addEventListener("click", () => {
     window.location.href = `./signup.html`
 })
 
-document.querySelector("#index h1").addEventListener("click", () => {
-    window.location.href = `../index.html`
-})
+// document.querySelector("#index h1").addEventListener("click", () => {
+//     window.location.href = `../index.html`
+// })
 
 
 // admin
