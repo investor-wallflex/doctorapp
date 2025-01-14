@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const { connection } = require("./config/db"); // Import database connection
+const { connectToDB } = require("./config/db"); // Import the updated database connection function
 const { v4: uuidV4 } = require("uuid");
 const { sendEmail } = require("./nodemailer/sendingEmail");
 
@@ -16,11 +16,40 @@ const { doctorRoute } = require("./route/doctorRoute");
 const { appointmentRoute } = require("./route/appointmentRoute");
 const { adminRoute } = require("./route/adminRoute");
 
+// Variable to store the connected database
+let database;
+
+// Initialize the database connection
+async function initializeDB() {
+    try {
+        database = await connectToDB(); // Connect to MongoDB
+        console.log("Database connection established!");
+    } catch (error) {
+        console.error("Failed to connect to the database:", error);
+        process.exit(1); // Exit the app if the database connection fails
+    }
+}
+
+// Call the database initialization before starting the server
+initializeDB();
+
+// Example endpoint to use the database
+app.get("/example", async (req, res) => {
+    try {
+        const collection = database.collection("exampleCollection"); // Replace with your actual collection name
+        const data = await collection.find().toArray();
+        res.status(200).send(data);
+    } catch (error) {
+        res.status(500).send({ message: "Error fetching data", error });
+    }
+});
+
 // Home route
 app.get("/", async (req, res) => {
     res.status(200).send("Welcome to Hospital Management Backend");
 });
 
+// Email route
 app.post("/email", async (req, res) => {
     const { email, url } = req.body;
     try {
@@ -32,7 +61,7 @@ app.post("/email", async (req, res) => {
 
         res.send({ message: "EMAIL sent" });
     } catch (err) {
-        res.send({ message: "error" });
+        res.send({ message: "Error sending email", error: err.message });
     }
 });
 
@@ -65,14 +94,7 @@ io.on("connection", (socket) => {
     });
 });
 
-// Start the server and connect to the database
-server.listen(process.env.PORT, async () => {
-    try {
-        await connection; // Connect to MongoDB
-        console.log("DB is connected");
-    } catch (error) {
-        console.error("DB is not connected", error);
-    }
+// Start the server
+server.listen(process.env.PORT, () => {
     console.log(`Listening at Port ${process.env.PORT}`);
-  
 });
