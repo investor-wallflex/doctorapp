@@ -1,4 +1,4 @@
-const backendURL = "https://doctorapp-80y0.onrender.com/"
+const backendURL = "https://pococare1.onrender.com/"
 
 document.querySelector(".admin-name").innerHTML = "Hi " + localStorage.getItem('name')
 

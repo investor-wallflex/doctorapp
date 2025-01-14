@@ -34,9 +34,9 @@ async function initializeDB() {
 initializeDB();
 
 // Example endpoint to use the database
-app.get("/example", async (req, res) => {
+app.get("/", async (req, res) => {
     try {
-        const collection = database.collection("exampleCollection"); // Replace with your actual collection name
+        const collection = database.collection("healthcare"); // Replace with your actual collection name
         const data = await collection.find().toArray();
         res.status(200).send(data);
     } catch (error) {

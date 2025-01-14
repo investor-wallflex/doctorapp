@@ -1,4 +1,4 @@
-const socket = io("https://doctorapp-80y0.onrender.com/", {
+const socket = io("https://pococare1.onrender.com/", {
     transports: ["websocket"]  //to avoid cors
 });
 
